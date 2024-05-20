@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CurrencyConverter.Maui.Views.MainPage"
+             xmlns:viewmodels="clr-namespace:CurrencyConverter.Maui.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
+             Title="MainPage">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableView.Root>
+                <TableSection>
+                    <ViewCell>
+                        <HorizontalStackLayout>
+                            <Label Text="Currency" VerticalTextAlignment="Center" Margin="5"/>
+                            <Picker Title="Select currency"
+                                    SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"
+                                    ItemDisplayBinding="{Binding Title}"
+                                    ItemsSource="{Binding Currencies}">
+                            </Picker>
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                    <EntryCell Label="Enter Amount in MAD" Keyboard="Numeric" Text="{Binding MoroccanDirhams, Mode=TwoWay}" />
+                    <TextCell Text="{Binding ResultText}" />
+                    <ViewCell>
+                        <Button Text="Compute" Command="{Binding ComputeCommand}"/>
+                    </ViewCell>
+                </TableSection>
+            </TableView.Root>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
